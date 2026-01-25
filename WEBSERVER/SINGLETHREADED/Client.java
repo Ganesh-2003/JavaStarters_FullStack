@@ -1,4 +1,4 @@
-package WEBSERVER.SINGLE_THREADED;
+package WEBSERVER.SINGLETHREADED;
 
 import java.io.BufferedReader;
 import java.io.IOException;
