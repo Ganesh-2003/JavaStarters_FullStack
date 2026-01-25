@@ -12,7 +12,7 @@ public class Server {
     public void run() throws IOException {
         int port = 8010;
         ServerSocket socket = new ServerSocket(port);
-        socket.setSoTimeout(10000);
+        // socket.setSoTimeout(10000);
         while(true) {
             try {
                 
@@ -22,6 +22,12 @@ public class Server {
                 PrintWriter toClient = new PrintWriter(acceptedConnection.getOutputStream());
                 BufferedReader fromClient = new BufferedReader(new InputStreamReader(acceptedConnection.getInputStream()));
                 toClient.println("Hello from Server");
+                toClient.flush();
+                String clientMessage = fromClient.readLine();
+                System.out.println("Client said :" +  clientMessage);
+                toClient.close();
+                fromClient.close();
+                acceptedConnection.close();
 
             } catch(IOException e) {
                 e.printStackTrace();
